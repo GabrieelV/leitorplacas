@@ -15,3 +15,7 @@ Após executado o container, executar o comando abaixo para executar o leitor de
   python3 executar.py
   
   
+para parar a excução do leitor, pressionar CTRL + C
+Para sair do container executar o comando
+
+  EXIT
