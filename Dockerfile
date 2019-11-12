@@ -1,20 +1,19 @@
-# This Dockerfile allows you to set up OpenALPR on an Ubuntu Docker image
-# The OS & Packages installed were from the following wiki: 
-# https://github.com/openalpr/openalpr/wiki/Compilation-instructions-(Ubuntu-Linux)
 FROM ubuntu:16.04
-
-# Contact info
-LABEL maintainerName="Joe"
-LABEL maintainer="joerodrig3@gmail.com"
-
-# Installing wget to run examples
-# Installing base packages specified by 
+MAINTAINER gabrielvie25@gmail.com
 RUN apt-get update -qq && apt-get install -y \
-    wget \
-    openalpr \
-    openalpr-daemon \
-    openalpr-utils \
-    libopenalpr-dev
+wget \
+openalpr \
+openalpr-daemon \
+openalpr-utils \
+libopenalpr-dev \
+git \
+python3 \
+python3-pip \
+vim
 
+RUN pip3 install pymysql opencv-python
 RUN mkdir /app
 WORKDIR /app
+RUN git clone https://github.com/GabrieelV/leitorplacas.git
+RUN cp /app/leitorplacas/executar.py /app
+RUN rm -rf /app/leitorplacas
